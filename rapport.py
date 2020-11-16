@@ -632,16 +632,12 @@ if __name__ == "__main__" :
 
 def display_10_images(dataset):
     # YOUR CODE HERE 
-    fmnist_train = FashionMNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor())
-    fmnist_train = DataLoader(fmnist_train, batch_size=32, num_workers=4, pin_memory=True)
-    fmnist_val = FashionMNIST(os.getcwd(), train=False, download=True, transform=transforms.ToTensor())
-    fmnist_val = DataLoader(fmnist_val, batch_size=32, num_workers=4,  pin_memory=True)
     for i in range(0,10):
       plt.figure(i)
       plot_one_tensor(dataset.data[i,:,:])
     plt.show()
-display_10_images(fmnist_train.dataset)
-display_10_images(fmnist_val.dataset)
+#display_10_images(fmnist_train.dataset)
+#display_10_images(fmnist_val.dataset)
 pass
 
 """What is the shape of each images
