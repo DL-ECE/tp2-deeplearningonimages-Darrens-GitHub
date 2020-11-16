@@ -596,7 +596,6 @@ def convolution_forward_torch(image, kernel):
       input[0,0,i,:] = torch.from_numpy(image[i,:])
     m = nn.Conv2d(1,1,kernel.shape,padding=1,stride=1)
     return m(input)
-convolution_forward_torch(I,K_0)
 
 """In pytorch you can also access other layer like convolution2D, pooling layers, for example in the following cell use the __torch.nn.MaxPool2d__ to redduce the image size."""
 
@@ -640,9 +639,9 @@ What are the different classes
 
 def fashion_mnist_dataset_answer():
     shape = 28  # replace None with the value you found
-    number_of_images_in_train_set = len(fmnist_train)*32
-    number_of_images_in_test_set = len(fmnist_val)*32
-    number_of_classes = None
+    number_of_images_in_train_set = 60000
+    number_of_images_in_test_set = 10016
+    number_of_classes = 10
     return {'shape': shape, 'nb_in_train_set': number_of_images_in_train_set, 'nb_in_test_set': number_of_images_in_test_set, 'number_of_classes': number_of_classes}
 pass
 
