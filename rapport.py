@@ -628,11 +628,8 @@ def display_10_images(dataset):
     for i in range(0,10):
       plt.figure(i)
       plot_one_tensor(dataset.data[i,:,:])
-
-#Display the 10 image from train set
+    plt.show()
 display_10_images(fmnist_train.dataset)
-
-#Display the 10 image from validation set
 display_10_images(fmnist_val.dataset)
 
 """What is the shape of each images
@@ -646,8 +643,6 @@ def fashion_mnist_dataset_answer():
     number_of_images_in_test_set = len(fmnist_val)*32
     number_of_classes = None
     return {'shape': shape, 'nb_in_train_set': number_of_images_in_train_set, 'nb_in_test_set': number_of_images_in_test_set, 'number_of_classes': number_of_classes}
-
-# Plot an image and the target
 
 """## Create a convolutional neural network
 
