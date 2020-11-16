@@ -632,13 +632,17 @@ if __name__ == "__main__" :
 
 def display_10_images(dataset):
     # YOUR CODE HERE 
+    fmnist_train = FashionMNIST(os.getcwd(), train=True, download=True, transform=transforms.ToTensor())
+    fmnist_train = DataLoader(fmnist_train, batch_size=32, num_workers=4, pin_memory=True)
+    fmnist_val = FashionMNIST(os.getcwd(), train=False, download=True, transform=transforms.ToTensor())
+    fmnist_val = DataLoader(fmnist_val, batch_size=32, num_workers=4,  pin_memory=True)
     for i in range(0,10):
       plt.figure(i)
       plot_one_tensor(dataset.data[i,:,:])
     plt.show()
+display_10_images(fmnist_train.dataset)
+display_10_images(fmnist_val.dataset)
 pass
-#display_10_images(fmnist_train.dataset)
-#display_10_images(fmnist_val.dataset)
 
 """What is the shape of each images
 How many images do we have
@@ -646,9 +650,9 @@ What are the different classes
 """
 
 def fashion_mnist_dataset_answer():
-    shape = 28*28  # replace None with the value you found
+    shape = [28,28]  # replace None with the value you found
     number_of_images_in_train_set = 60000
-    number_of_images_in_test_set = 10016
+    number_of_images_in_test_set = 10000
     number_of_classes = 10
     return {'shape': shape, 'nb_in_train_set': number_of_images_in_train_set, 'nb_in_test_set': number_of_images_in_test_set, 'number_of_classes': number_of_classes}
 pass
@@ -688,19 +692,15 @@ class CNNModel(nn.Module):
             nn.Conv2d(32, 64, kernel_size=5, stride=1, padding=2),
             nn.ReLU(),
             nn.MaxPool2d(kernel_size=2, stride=2))
-        #self.drop_out = nn.Dropout(0.25)
         self.flat = nn.Flatten()
         self.fc1 = nn.Linear(7 * 7 * 64, 1000)
         self.fc2 = nn.Linear(1000, 10)
-      
-        
 
     def forward(self, input):
         # Apply conv followed by relu, then in next line pool
           x = self.layer1(input)
           x = self.layer2(x)
           x = x.reshape(x.size(0), -1)
-          #out = self.drop_out(out)
           x = self.flat(x)
           x = self.fc1(x)
           y = self.fc2(x)
