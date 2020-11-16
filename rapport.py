@@ -97,7 +97,6 @@ def build_image_like_tensor(n_rows:int, n_colums: int, n_channels:int, default_v
   # YOUR CODE HERE
   tensor = np.full ((n_rows, n_colums, n_channels),fill_value=default_value)
   return tensor
-print(tensor)
 
 # Create 3 different tensors with the above function containing different value between [0,255]
 # Uncomment the 3 line below and complete with your answer 
@@ -158,7 +157,7 @@ print(mat_torch[0,3]) # Return first row and 4th column element
 # To do computation on the GPU (graphic card calculation can be 50x faster)
 
 # What is the GPU on this machine ? 
-!nvidia-smi
+#!nvidia-smi
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 device
 
