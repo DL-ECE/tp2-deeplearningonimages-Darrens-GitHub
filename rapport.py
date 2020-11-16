@@ -646,7 +646,7 @@ What are the different classes
 """
 
 def fashion_mnist_dataset_answer():
-    shape = (28 ,28)  # replace None with the value you found
+    shape = [28 ,28]  # replace None with the value you found
     number_of_images_in_train_set = 60000
     number_of_images_in_test_set = 10000
     number_of_classes = 10
@@ -771,7 +771,7 @@ if __name__ == "__main__":
 Same as TP 1 please write a short description of your experiment
 
 j'ai implementé ma convolution de la façon suivante: conv1 est constituée de 32 canaux de filtres convolutionnels 5 x 5 + une activation ReLU, suivie d'un maxpol2d (cela donne une sortie de 14 x 14). Dans conv2, la sortie 14 x 14 conv1 est à nouveau analysée avec 64 canaux de filtres convolutifs 5 x 5 et un maxpolling2d pour produire une sortie 7 x 7 de con2. Enfin j'effectue un flatten et je crée mes diffenrent layers.
-j'utilise les même que pour le TP1, à la diference que je diminu mon learning_rate
+j'utilise les même que pour le TP1, à la diference que diminu mon learning_rate. a partir de la 5ème j'ai une accuracy qui croit et atteint les 96% et même plus.
 
 # BONUS 
 
