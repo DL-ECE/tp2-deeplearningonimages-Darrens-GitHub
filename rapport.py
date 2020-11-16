@@ -181,16 +181,20 @@ def sigmoid(input_tensor: torch.Tensor) -> torch.Tensor:
     # YOUR CODE HERE
     #if(type(input_tensor)!=torch.tensor):
      # input_tensor = torch.from_numpy(input_tensor.astype(np.float32))
-    sg = 1/(1+torch.exp(-input_tensor))
-    return  sg
+    m = nn.Sigmoid()
+    return m(input_tensor)
+    #sg = 1/(1+torch.exp(-input_tensor))
+    #return  sg
 
 
 def softmax(input_tensor: torch.Tensor)-> torch.Tensor:
     """Apply a softmax to the input tensor"""
     #if(type(input_tensor)!=torch.tensor):
      # input_tensor = torch.from_numpy(input_tensor.astype(np.float32))
-    exps = torch.exp(input_tensor)
-    return exps / torch.sum(exps,axis=1).reshape(-1,1)
+    m = nn.Softmax(dim=1)
+    return m(input_tensor)
+    #exps = torch.exp(input_tensor)
+    #return exps / torch.sum(exps,axis=1).reshape(-1,1)
 
 
 def target_to_one_hot(targets: torch.Tensor, num_classes=10) -> torch.Tensor:
@@ -642,7 +646,7 @@ What are the different classes
 """
 
 def fashion_mnist_dataset_answer():
-    shape = 28  # replace None with the value you found
+    shape = 28*28  # replace None with the value you found
     number_of_images_in_train_set = 60000
     number_of_images_in_test_set = 10016
     number_of_classes = 10
